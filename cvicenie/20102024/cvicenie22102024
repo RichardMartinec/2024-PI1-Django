@@ -1,0 +1,8 @@
+#pole = int(input("zadaj n: "))
+#zrna = (pole - 1) ** 2
+#print("Na", pole, "políčku je", zrna, "zrniek ryže")
+
+a = int(input("Zadaj 1. číslo: "))
+b = int(input("Zadaj 2. číslo: "))
+i = a + b
+print(f'{a}+{b}={i}')
