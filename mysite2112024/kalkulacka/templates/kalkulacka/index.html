@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulačka</title>
+</head>
+<body>
+    <h1>Kalkulacka</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <span style="color:red">{{error_msg}}</span>
+        <br>
+        <input type="text" name="prva">
+        <select name="operacia">
+            <option value="+" {% if request.POST.operator == "+" %} selected {% endif %}>+</option>
+            <option value="-" {% if request.POST.operator == "-" %} selected {% endif %}>-</option>
+            <option value="*" {% if request.POST.operator == "*" %} selected {% endif %}>*</option>
+            <option value="/" {% if request.POST.operator == "/" %} selected {% endif %}>/</option>
+            <option value="**" {% if request.POST.operator == "**" %} selected {% endif %}>**</option>
+        </select>
+        <input type="text" name="druha" value={{request.POST.b}}><br>
+        <input type="submit" text="vypočítať"><br>
+        {{vysledok}}
+    </form>
+</body>
+</html>
