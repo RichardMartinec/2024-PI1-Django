@@ -1,0 +1,262 @@
+#def vyhod_duplikaty(retazec):
+#    dlzka  = len(retazec)
+#    text =  ''
+#    for i in range(len(retazec) - 1):
+#        #print(retazec[i])
+#        #print(retazec[i + 1])
+#        if retazec[i] != retazec[i+1]:
+#            #print(retazec[i])
+#            text += retazec[i]
+#            #print(text[i])
+#    text += retazec[i+1]
+#    print(text)
+#    return text
+
+#vyhod_duplikaty('Zilliina')
+
+def ozatvorkuj(retazec, podretazec1):
+    retazec2 = retazec
+    podretazec2 = '('
+    podretazec2 += podretazec1
+    podretazec2 += ')'
+    print(podretazec2)
+    retazec2 = retazec.replace(podretazec1, podretazec2)
+    print(retazec2)
+ozatvorkuj('Bratislava', 'a')
+
+def sucet(retazec):
+    i = retazec.find('+')
+    return int(retazec[:i]) + int(retazec[i + 1:])
+
+def sucet(retazec):
+    vysl = 0
+    while True:
+        i = retazec.find('+')
+        if i > 0:
+            vysl += int(retazec[:i])
+            retazec = retazec[i + 1:]
+        else:
+            return vysl + int(retazec)
+
+def vyhod_duplikaty(retazec):
+    vysl = pred = ''
+    for znak in retazec:
+        if znak != pred:
+            vysl += znak
+            pred = znak
+    return vysl
+
+import tkinter
+import random
+
+canvas = tkinter.Canvas()
+canvas.pack()
+
+x, y = 50, 130
+for i in range(0x2654, 0x265A):
+    farba = f'#{random.randrange(256**3):06x}'
+    canvas.create_text(x, y, text=chr(i), font='arial 50', fill=farba)
+    x += 60
+
+tkinter.mainloop()
+
+
+import tkinter
+
+def stvorce(retazec, vel=60):
+    x, y = 10, 60
+    for farba in retazec.split():
+        canvas.create_rectangle(x, y, x + vel, y + vel, fill=farba)
+        x += vel + 3
+
+canvas = tkinter.Canvas()
+canvas.pack()
+
+stvorce(40, 'red blue purple red gold')
+
+tkinter.mainloop()
+
+
+import tkinter
+
+def stvorce(retazec, vel=60):
+    x, y = 10, 200
+    while True:
+        vel1 = vel
+        for slovo in retazec.split():
+            if slovo[0] in '123456789':
+                vel1 = int(slovo)
+            else:
+                if x + vel1 >= sirka:
+                    return
+                canvas.create_rectangle(x, y, x + vel1, y - vel1, fill=slovo)
+                x += vel1 + 3
+                vel1 = vel
+
+sirka = 450
+canvas = tkinter.Canvas(width=sirka)
+canvas.pack()
+
+stvorce('40 red 20 blue purple 40 red 30 gold')
+
+tkinter.mainloop()
+
+
+
+import tkinter
+
+def kresli(retazec):
+    x, y = 100, 100
+    for znak in retazec:
+        x1, y1 = x, y
+        if znak == 's':
+            y1 -= 10
+        elif znak == 'v':
+            x1 += 10
+        elif znak == 'j':
+            y1 += 10
+        elif znak == 'z':
+            x1 -= 10
+        else:
+            print(f'nerozumiem "{znak}"')
+            return
+        canvas.create_line(x, y, x1, y1)
+        x, y = x1, y1
+
+canvas = tkinter.Canvas()
+canvas.pack()
+
+kresli('ssvvjjzzvvvvjjzzssjjjjzzssvvzzzzssvvjj')
+
+tkinter.mainloop()
+
+
+
+import tkinter
+
+def kresli(retazec):
+    x, y = x1, y1 = 100, 100
+    pd = True
+    pocet = 1
+    for znak in retazec:
+        if '0' <= znak <= '9':
+            pocet = int(znak)
+        elif znak == 's':
+            y1 -= 10 * pocet
+            pocet = 1
+        elif znak == 'v':
+            x1 += 10 * pocet
+            pocet = 1
+        elif znak == 'j':
+            y1 += 10 * pocet
+            pocet = 1
+        elif znak == 'z':
+            x1 -= 10 * pocet
+            pocet = 1
+        elif znak == 'd':
+            pd = True
+        elif znak == 'h':
+            pd = False
+        else:
+            print(f'nerozumiem "{znak}"')
+            return
+        if pd:
+            canvas.create_line(x, y, x1, y1)
+        x, y = x1, y1
+
+canvas = tkinter.Canvas()
+canvas.pack()
+
+kresli('4v4j4z4sh5vd'*5)
+
+tkinter.mainloop()
+
+
+
+def posun_znak(znak, posun):
+    if 'a' <= znak <= 'z':
+        return chr((ord(znak) - 97 + posun) % 26 + 97)
+    return znak
+
+def zakoduj(text, posun):
+    vysl = ''
+    for znak in text:
+        vysl += posun_znak(znak, posun)
+    return vysl
+
+
+
+    def pocet(retazec, podretazec):
+        vysl = 0
+        d = len(podretazec)
+        for i in range(len(retazec) - d + 1):
+            if retazec[i:i + d] == podretazec:
+                vysl += 1
+        return vysl
+
+
+    
+    
+
+    def ite_slovo(veta, ix):
+        while True:
+            medz = (veta + ' ').find(' ')
+            if ix == 0:
+                return veta[:medz]
+            veta = veta[medz + 1:]
+            ix -= 1
+
+    alebo:
+
+    def ite_slovo(veta, ix):
+        while ix >= 0:
+            medz = (veta + ' ').find(' ')
+            vysl = veta[:medz]
+            veta = veta[medz + 1:]
+            ix -= 1
+        return vysl
+
+    alebo:
+
+    def ite_slovo(veta, ix):
+        start = 0
+        while True:
+            koniec = (veta + ' ').find(' ', start)
+            if ix == 0:
+                return veta[start:koniec]
+            start = koniec + 1
+            ix -= 1
+
+
+    
+
+
+    def prevrat_poradie(veta):
+        vysl = ''
+        for slovo in veta.split():
+            if vysl == '':
+                vysl = slovo
+            else:
+                vysl = slovo + ' ' + vysl
+        return vysl
+
+    alebo:
+
+    def prevrat_poradie(veta):
+        return ' '.join(reversed(veta.split()))
+
+
+    
+    
+
+    
+
+    def usporiadaj(h1, h2, h3):
+        if h1 > h2:
+            h1, h2 = h2, h1
+        if h2 > h3:
+            h2, h3 = h3, h2
+        if h1 > h2:
+            h1, h2 = h2, h1
+        return f'{h1} {h2} {h3}'
+
